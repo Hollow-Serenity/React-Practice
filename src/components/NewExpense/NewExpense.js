@@ -3,9 +3,19 @@ import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
 const NewExpense = () => {
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    console.log(expenseData);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      {/* This is a convention that i'm following "onSaveExpenseData", to make it clear that hte value for this prop is a function and can be used to call this instead
+      of the expense form component. */}
+      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
     </div>
   );
 };
